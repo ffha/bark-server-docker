@@ -15,6 +15,5 @@ RUN apk add tzdata bash tini
 RUN ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
 RUN echo ${TZ} > /etc/timezone
 COPY --from=builder /usr/src/bark-server /app/bark-server
-COPY --from=builder /usr/src/deploy/entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD /app/bark-server
