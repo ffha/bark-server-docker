@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  bark-server:
+  web:
     image: finab/bark-server
     container_name: bark-server
     restart: always
