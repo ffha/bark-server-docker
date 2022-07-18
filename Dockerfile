@@ -11,7 +11,8 @@ FROM alpine as runner
 ENV TZ Asia/Shanghai
 WORKDIR /app
 RUN [ ! -e "/etc/nsswitch.conf" ] && echo 'hosts: files dns' > /etc/nsswitch.conf
-RUN apk add tzdata bash tini
+RUN apk upgrade
+RUN apk add tzdata tini
 RUN ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
 RUN echo ${TZ} > /etc/timezone
 COPY --from=builder /usr/src/bark-server /app/bark-server
